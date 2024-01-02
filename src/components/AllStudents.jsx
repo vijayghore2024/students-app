@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 
 const AllStudents = () => {
+
+  useEffect(()=>{
+    axios.get('http://localhost:8080/allstudents')
+    .then(function (response) {
+      // handle success
+      // console.log(response.data);
+      setData([...response.data]);
+    })
+  }, [])
+
+  const [data, setData] = useState([])
+
+
   return (
     <div className='container'>
       <h1 className='text-center my-4'>All Students</h1>
@@ -9,55 +23,25 @@ const AllStudents = () => {
           <tr>
             <th scope="col" className='text-center'>Roll No</th>
             <th scope="col" className='text-center'>Name</th>
+            <th scope="col" className='text-center'>Dob</th>
             <th scope="col" className='text-center'>City</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Ram</td>
-            <td>Pune</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Shyam</td>
-            <td>Mumbai</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Sita</td>
-            <td>Pune</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Shyam</td>
-            <td>Mumbai</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Sita</td>
-            <td>Pune</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Shyam</td>
-            <td>Mumbai</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Sita</td>
-            <td>Pune</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Shyam</td>
-            <td>Mumbai</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Sita</td>
-            <td>Pune</td>
-          </tr>
+
+          {
+            data.map(row => (
+              <tr key={row.rno}>
+                <th scope="row">{row.rno}</th>
+                <td>{row.name}</td>
+                <td>{row.dob}</td>
+                <td>{row.city}</td>
+              </tr>
+            ))
+          }
+
+
+
         </tbody>
       </table>
     </div>
