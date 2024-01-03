@@ -6,8 +6,6 @@ const AllStudents = () => {
   useEffect(()=>{
     axios.get('http://localhost:8080/allstudents')
     .then(function (response) {
-      // handle success
-      // console.log(response.data);
       setData([...response.data]);
     })
   }, [])

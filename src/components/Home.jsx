@@ -12,7 +12,7 @@ const Home = () => {
 
   return (
     <div style={myHomeStyle} className='d-flex justify-content-center align-items-center'>
-        <h1 className='bg-dark text-light display-1 fw-bold'>WELCOME TO TECHREL</h1>
+        <h1 className='bg-dark text-light display-1 fw-bold p-5 rounded-5'>WELCOME TO TECHREL</h1>
     </div>
   )
 }
