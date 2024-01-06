@@ -10,7 +10,7 @@ const AddStudent = () => {
 
   const [showAlert, setShowAlert] = useState(false)
 
- const handleClick = () => {
+  const handleClick = () => {
     let stud = {
       "rno": rno,
       "name": name,
@@ -18,39 +18,36 @@ const AddStudent = () => {
       "city": city
     }
 
-    if(rno == '' || name=='' || dob=='' || city==''){
-
-
-    }else{
+    if (!(rno == '' || name == '' || dob == '' || city == '')) {
       axios.post('http://localhost:8080/insert/stud', stud)
-    .then(function (response) {
+        .then(function (response) {
 
-         setRno('');
-         setName('');
-         setDob('');
-         setCity('');
+          setRno('');
+          setName('');
+          setDob('');
+          setCity('');
 
-         setShowAlert(true)
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+          setShowAlert(true)
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
 
     }
- }
+  }
 
- setTimeout(() => {
+  setTimeout(() => {
     setShowAlert(false)
- }, 2000);
+  }, 2000);
 
   return (
     <>
-    {
-      showAlert && (<div class="alert alert-success" role="alert">
-      Record Saved Successfully
-    </div>)
-    }
-    <div className='d-flex flex-column justify-content-center align-items-center'>
+      {
+        showAlert && (<div class="alert alert-success" role="alert">
+          Record Saved Successfully
+        </div>)
+      }
+      <div className='d-flex flex-column justify-content-center align-items-center'>
 
         <h1 className='text-center my-3'>Add Student</h1>
         <div className='p-4 w-50  border border-dark rounded-5'>
